@@ -2,7 +2,7 @@
 #define MALCOLM_H
 
 /* Includes */
-#include <stdint.h> // uintX_t
+#include <stdint.h>	// uintX_t
 
 /* Defines */
 /* As defined in if_ether.h */

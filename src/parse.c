@@ -2,6 +2,7 @@
 
 #include <stdio.h>	// fprintf(), stderr
 
+check flags_
 int parse_args(t_malcolm_ctx *ctx, int argc, char **argv)
 {
 	if (argc != 5) {
