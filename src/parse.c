@@ -1,12 +1,10 @@
-#include "ft_malcolm.h"
+#include "malcolm.h"
 #include <stdio.h> // fprintf(), stderr
-
 
 void print_usage()
 {
 	fprintf(stdout, "Hello\n");
 }
-
 
 int parse_input(int argc, char **argv)
 {

@@ -1,4 +1,4 @@
-#include "ft_malcolm.h"
+#include "malcolm.h"
 #include <signal.h> // signal(), SIGINT
 #include <sys/socket.h> // socket(), AF_INET, SOCK_RAW
 #include <arpa/inet.h> // htons()
