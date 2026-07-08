@@ -5,6 +5,9 @@
 #include <stdint.h>	// uintX_t
 
 /* Defines */
+#define FLAG_HELP (1 << 0)	// -h, --help
+#define FLAG_VERBOSE (1 << 1)	// -v, --verbose
+
 /* As defined in if_ether.h */
 #define ETH_ALEN	6		/* Octets in one ethernet addr */
 #define ETH_P_ARP	0x0806		/* Address Resolution packet */
@@ -37,18 +40,21 @@ typedef struct __attribute__((packed)) {
 	uint32_t ar_tip;            /* Target IP address */
 } arp_ether_ipv4;
 
-struct s_target {
-	uint8_t ip[];
-	uint8_t mac[];
-};
+/* Target */
+typedef struct s_target {
+	uint8_t	ip[];
+	uint8_t	mac[];
+} t_target;
 
 /* Context */
-struct s_malcolm_ctx {
-	s_target source;
-	s_target destination;
-} s_malcolm_ctx
+typedef struct s_malcolm_ctx {
+	const char	*progname;
+	int		flags;
+	t_target	src;
+	t_target	dst;
+} t_malcolm_ctx;
 
 /* Prototypes */
-int parse_input(int argc, char **argv);
+int parse_input(t_malcolm_ctx *ctx, int argc, char **argv);
 
 #endif

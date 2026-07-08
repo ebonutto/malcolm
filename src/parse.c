@@ -2,13 +2,25 @@
 
 #include <stdio.h>	// fprintf(), stderr
 
-check flags_
+static void parse_flag(int *flags, char *arg) //! const arg
+{
+	if (strcmp("-h", arg) == 0 || strcmp("--help", arg) == 0)
+		*flags |= FLAG_HELP;
+	if (strcmp("-v", arg) == 0 || strcmp("--verbose", arg) == 0)
+		*flags |= FLAG_VERBOSE;
+}
+
 int parse_args(t_malcolm_ctx *ctx, int argc, char **argv)
 {
-	if (argc != 5) {
-		fprintf(stderr, "%s: usage error: invalid number of arguments\n", argv[0]);
-		fprintf(stderr, "\nUsage:\tyeahhh\n");
-		return (1);
+	int i;
+
+	ctx->progname = argv[0];
+	i = 1;
+	while (i < argc) {
+		if (argv[i][0] == '-')
+			parse_flag(ctx->flags, argv[i]);
+		else
+			parse_address();
 	}
 
 	return (0);
