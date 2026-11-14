@@ -2,9 +2,13 @@
 
 int main(int argc, char **argv)
 {
-	t_malcolm_ctx ctx;
+	t_malcolm ctx;
+	int ret;
 
-	if (parse_args(&ctx, argc, argv) != 0)
+	if (parse_args(&ctx.args, argc, argv) != 0)
 		return (1);
-	return (malcolm(&ctx));
+
+	ret = malcolm(&ctx);
+
+	return (ret);
 }
