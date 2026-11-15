@@ -5,7 +5,7 @@
 #include <stdlib.h> // strtoul()
 #include <string.h> // strlen()
 
-static int parse_ipv4(struct in_addr *ip, const char *str)
+static int parse_ip(struct in_addr *ip, const char *str)
 {
 	if (inet_pton(AF_INET, str, ip) != 1)
 		return (1);
@@ -42,11 +42,11 @@ int parse_args(t_args *args, int argc, char **argv)
 
 	args->progname = argv[0];
 
-	if (parse_ipv4(&args->src.ip, argv[1]))
+	if (parse_ip(&args->src.ip, argv[1]))
 		return (1);
 	if (parse_mac(args->src.mac, argv[2]))
 		return (1);
-	if (parse_ipv4(&args->dest.ip, argv[3]))
+	if (parse_ip(&args->dest.ip, argv[3]))
 		return (1);
 	if (parse_mac(args->src.mac, argv[4]))
 		return (1);

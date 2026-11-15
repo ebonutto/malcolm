@@ -30,7 +30,7 @@ typedef struct s_ethernet {
 typedef struct s_packet {
 	t_ethernet ethernet;
 	t_arp arp;
-}
+} t_packet;
 
 typedef struct s_target {
 	struct in_addr ip;
