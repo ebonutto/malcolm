@@ -21,7 +21,7 @@ int malcolm(t_malcolm *ctx)
 		return (1);
 
 	while (1) {
-		
+		build_packet()
 	}
 
 	return (0);

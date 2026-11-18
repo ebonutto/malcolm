@@ -9,18 +9,6 @@
 #define FLAG_VERBOSE (1 << 1)
 
 /* Structures */
-typedef struct s_target {
-	struct in_addr ip;
-	uint8_t mac[6];
-} t_target;
-
-typedef struct s_args {
-	char *progname;
-	t_target src;
-	t_target dest;
-	int flags;
-} t_args;
-
 typedef struct s_arp {
 	uint16_t hardware_type;
 	uint16_t protocol_type;
@@ -38,6 +26,23 @@ typedef struct s_ethernet {
 	uint8_t src_mac[6];
 	uint16_t ether_type;
 } t_ethernet;
+
+typedef struct s_packet {
+	t_ethernet ethernet;
+	t_arp arp;
+}
+
+typedef struct s_target {
+	struct in_addr ip;
+	uint8_t mac[6];
+} t_target;
+
+typedef struct s_args {
+	char *progname;
+	t_target src;
+	t_target dest;
+	int flags;
+} t_args;
 
 typedef struct s_malcolm {
 	t_args args;
