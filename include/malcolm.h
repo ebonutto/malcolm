@@ -28,7 +28,7 @@ typedef struct s_ethernet {
 } t_ethernet;
 
 typedef struct s_packet {
-	t_ethernet ethernet;
+	t_ethernet eth;
 	t_arp arp;
 } t_packet;
 
@@ -47,11 +47,21 @@ typedef struct s_args {
 typedef struct s_malcolm {
 	t_args args;
 	int sockfd;
+	int ifindex;
 } t_malcolm;
 
 /* Prototypes */
+/* parsing */
 int parse_args(t_args *args, int argc, char **argv);
 
+/* malcolm */
 int malcolm(t_malcolm *ctx);
+
+/* network */
+int setup_socket(t_malcolm *ctx);
+
+/* packet */
+t_packet build_packet(t_malcolm *ctx, t_target *me, t_target *dest);
+int send_packet(t_malcolm *ctx, t_target *dest, t_packet *packet);
 
 #endif
