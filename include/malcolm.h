@@ -47,7 +47,7 @@ typedef struct s_args {
 typedef struct s_malcolm {
 	t_args args;
 	int sockfd;
-	int ifindex;
+	unsigned int ifindex;
 } t_malcolm;
 
 /* Prototypes */
@@ -59,6 +59,7 @@ int malcolm(t_malcolm *ctx);
 
 /* network */
 int setup_socket(t_malcolm *ctx);
+int find_usable_ifname(char *out);
 
 /* packet */
 t_packet build_packet(t_malcolm *ctx, t_target *me, t_target *dest);
